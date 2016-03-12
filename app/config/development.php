@@ -30,6 +30,7 @@ return [
 		'smtp_secure' => 'tls',
 		'host' => 'smtp.google.com',
 		'username' => 'antoni.fs@google.com',
+		'password' => 'Gka1mka1m32',
 		'port' => '587',
 		'html' => true
 	],

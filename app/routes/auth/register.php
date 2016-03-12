@@ -43,9 +43,13 @@ $app->post('/register', function() use ($app){
 	]);
 
 	if ( $v->passes() ) {
-		$app->user->create($data);
 
-		
+		$user = $app->user->create($data);
+
+		$app->mail->send("email/auth/registered.php", ['user'=>$user], function($message) use ($user) {
+			$message->to($user->email);
+			$message->subject("Thanks for Registering.");
+		});		
 		
 		$app->flash('global', "User has been created!");
 		$app->response->redirect($app->urlFor('home'));
